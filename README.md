@@ -51,14 +51,14 @@ sequenceDiagram
   * game time
   * opponent
   * health status
-* **Optimization feature**
+* *Optimization feature*
 * Display of Optimized roster
 
 ### Technologies
 
 I am going to use the required technologies in the following ways.
 
-- **HTML** - Description here
+- **HTML** - Application of proper HTML use for the following pages: 1. Login 2. Page displaying the Fantasy team and optimization features
 - **CSS** - Description here
 - **React** - Description here
 - **Service** - Description here
