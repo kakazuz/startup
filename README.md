@@ -1,7 +1,7 @@
-## Fantasy Helper!
+# Fantasy Helper!
 
 [My Notes](notes.md)
-# Website Description:
+## Website Description:
 Introducing Fantasy Football Helper, a sleek web app that takes your fantasy football game to the next level! Simply input your team roster, and our app displays key player details—names, positions, and projected fantasy points sourced from top platforms like ESPN, Sleeper, and Yahoo. Our main feature is an optimization tool that analyzes matchup projections to recommend your ideal starting lineup. Fantasy Football Helper empowers every team manager to make smarter, data-driven decisions in seconds. Elevate your fantasy game and dominate your league with Fantasy Football Helper!
 
 
