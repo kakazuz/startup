@@ -59,11 +59,11 @@ sequenceDiagram
 I am going to use the required technologies in the following ways.
 
 - **HTML** - Application of proper HTML use for the following pages: 1. Login 2. Page displaying the Fantasy team and optimization features
-- **CSS** - Description here
-- **React** - Description here
-- **Service** - Description here
-- **DB/Login** - Description here
-- **WebSocket** - Description here
+- **CSS** - My aesthetics of the roster display like player points, game time, opponent, and status will be through CSS. Smooth transitions and allignment is importanat for my Fantasy Helper.
+- **React** - Display of roster slots, and manipulation of moving players in and out of starting lineups, shows optimization animation.
+- **Service** - Handles tasks like logging users in securely and fetching data, such as player projections or team info, from your server to display on the site.
+- **DB/Login** - torage system for keeping user info (like usernames and passwords) and app data (like player stats or saved lineups) safe and organized, so the site can retrieve or update it when needed.
+- **WebSocket** - Pushes real-time updates, such as live player point changes during games, to your site without users refreshing the page.
 
 ## 🚀 AWS deliverable
 
