@@ -1,4 +1,4 @@
-# Your startup name here
+# Fantasy Helper!
 
 [My Notes](notes.md)
 
