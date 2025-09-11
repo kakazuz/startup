@@ -43,9 +43,16 @@ sequenceDiagram
 
 ### Key features
 
-- Describe your key feature
-- Describe your key feature
-- Describe your key feature
+* Secure login of team via HTTPS
+* Display of roster
+* Manipulation of roster slots
+* View player
+  * proj points
+  * game time
+  * opponent
+  * health status
+* **Optimization feature**
+* Display of Optimized roster
 
 ### Technologies
 
