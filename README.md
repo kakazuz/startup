@@ -27,7 +27,7 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 Introducing Fantasy Football Helper, a sleek web app that takes your fantasy football game to the next level! Simply input your team roster, and our app displays key player details—names, positions, and projected fantasy points sourced from top platforms like ESPN, Sleeper, and Yahoo. Our main feature is an optimization tool that analyzes matchup projections to recommend your ideal starting lineup. Fantasy Football Helper empowers every team manager to make smarter, data-driven decisions in seconds. Elevate your fantasy game and dominate your league with Fantasy Football Helper!
 ### Design
 
-![Design image](placeholder.png)
+![rough sketch_1](https://github.com/user-attachments/assets/8b59f88a-6ea7-47a9-8272-37dd45b448dd)
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
