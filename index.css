@@ -1,4 +1,7 @@
 body {
     background: #817f7f;
     color: #ffffff;
+    line-height: 1.6;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 0 20px;
 }
