@@ -25,11 +25,7 @@ The part I didn't like was the duplication of the header and footer code. This i
 
 ## CSS
 
-This took a couple hours to get it how I wanted. It was important to make it responsive and Bootstrap helped with that. It looks great on all kinds of screen sizes.
-
-Bootstrap seems a bit like magic. It styles things nicely, but is very opinionated. You either do, or you do not. There doesn't seem to be much in between.
-
-I did like the navbar it made it super easy to build a responsive header.
+I had some trouble at first but it ended up being super fun! I still want to make more adjustments and use bootstrap methods to make it more aesthetic.
 
 ```html
       <nav class="navbar navbar-expand-lg bg-body-tertiary">
