@@ -1,4 +1,4 @@
-body {
+/* body {
     background: #817f7f;
     color: #ffffff;
     line-height: 1.6;
@@ -36,5 +36,53 @@ nav a {
     color: #fff;
     text-decoration: none;
     font-weight: bold;
+    transition: color 0.3s;
+} */
+
+body {
+    background: #817f7f !important;
+    color: #ffffff !important;
+    line-height: 1.6;
+    font-family: Arial, Helvetica, sans-serif !important;
+    padding: 0 20px;
+}
+
+header {
+    background: #333;
+    color: #fff;
+    padding: 15px;
+    display: flex;
+    justify-content: flex-start;
+    gap: 40px;
+    align-items: center;
+    border-radius: 10px 10px 10px 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-size: 18px;
+    margin: 15px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 25px;
+    font-family: inherit;
+    font-weight: bold;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+    margin: 0;
+    padding: 0;
+
+}
+
+
+header nav a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    font-family: inherit;
     transition: color 0.3s;
 }
