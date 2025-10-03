@@ -66,32 +66,34 @@ I am going to use the required technologies in the following ways.
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Server deployed and accessible with custom domain name** - [My server link](https://yourdomainnamehere.click).
+- [x] **Server deployed and accessible with custom domain name** - [My server link](https://yourdomainnamehere.click).
 
 ## 🚀 HTML deliverable
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **HTML pages** - I did not complete this part of the deliverable.
-- [ ] **Proper HTML element usage** - I did not complete this part of the deliverable.
-- [ ] **Links** - I did not complete this part of the deliverable.
-- [ ] **Text** - I did not complete this part of the deliverable.
-- [ ] **3rd party API placeholder** - I did not complete this part of the deliverable.
-- [ ] **Images** - I did not complete this part of the deliverable.
-- [ ] **Login placeholder** - I did not complete this part of the deliverable.
-- [ ] **DB data placeholder** - I did not complete this part of the deliverable.
-- [ ] **WebSocket placeholder** - I did not complete this part of the deliverable.
+- [x] **HTML pages** - I did not complete this part of the deliverable.
+- [x] **Proper HTML element usage** - I did not complete this part of the deliverable.
+- [x] **Links** - I did not complete this part of the deliverable.
+- [x] **Text** - I did not complete this part of the deliverable.
+- [x] **3rd party API placeholder** - I did not complete this part of the deliverable.
+- [x] **Images** - I did not complete this part of the deliverable.
+- [x] **Login placeholder** - I did not complete this part of the deliverable.
+- [x] **DB data placeholder** - I did not complete this part of the deliverable.
+- [x] **WebSocket placeholder** - I did not complete this part of the deliverable.
 
 ## 🚀 CSS deliverable
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Header, footer, and main content body** - I did not complete this part of the deliverable.
-- [ ] **Navigation elements** - I did not complete this part of the deliverable.
-- [ ] **Responsive to window resizing** - I did not complete this part of the deliverable.
-- [ ] **Application elements** - I did not complete this part of the deliverable.
-- [ ] **Application text content** - I did not complete this part of the deliverable.
-- [ ] **Application images** - I did not complete this part of the deliverable.
+I linked all of my index.html, login.html, about.html pages to individual css files. Each css file has their own copied and pasted background, font, header, and nav styles. The biggest addition to my css deliverable is the integration of my login feature using bootstrap features. Other details I had to fix were some of the html tags like from a menu to ul tag. Each of the commits/push have a snentence desciribing what I had completed.
+
+- [x] **Header, footer, and main content body** - I did not complete this part of the deliverable.
+- [x] **Navigation elements** - I did not complete this part of the deliverable.
+- [x] **Responsive to window resizing** - I did not complete this part of the deliverable.
+- [x] **Application elements** - I did not complete this part of the deliverable.
+- [x] **Application text content** - I did not complete this part of the deliverable.
+- [x] **Application images** - I did not complete this part of the deliverable.
 
 ## 🚀 React part 1: Routing deliverable
 
