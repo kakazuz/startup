@@ -25,7 +25,8 @@ export default function App() {
         </header>
 
         <Routes>
-            <Route path="/home" element={<Home />} exact />
+            <Route path="/" element={<Home />} exact />
+            <Route path="/home" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/helper" element={<Helper />} />
             <Route path="/about" element={<About />} />
