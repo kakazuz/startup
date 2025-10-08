@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/kakazuz/startup/issues"
   },
-  "homepage": "https://github.com/kakazuz/startup#readme"
+  "homepage": "https://github.com/kakazuz/startup#readme",
+  "devDependencies": {
+    "vite": "^7.1.9"
+  }
 }
