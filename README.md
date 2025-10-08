@@ -99,9 +99,11 @@ I linked all of my index.html, login.html, about.html pages to individual css fi
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Bundled using Vite** - I did not complete this part of the deliverable.
-- [ ] **Components** - I did not complete this part of the deliverable.
-- [ ] **Router** - I did not complete this part of the deliverable.
+I rearrages all my files so that Vite would accept the directory in the public and src folders. I added jsx files for each of my pages as well as an app.jsx and app.html for the routing and browser routes. At first it was kinda overwhelming, but once I did the Simon React with the video and finally moved onto my own startup it took me half the time because I understood alot more of what was going on. It was a fun activity, I wish I would've used more classes than basic html tags.
+
+- [x] **Bundled using Vite** - I did not complete this part of the deliverable.
+- [x] **Components** - I did not complete this part of the deliverable.
+- [x] **Router** - I did not complete this part of the deliverable.
 
 ## 🚀 React part 2: Reactivity deliverable
 
