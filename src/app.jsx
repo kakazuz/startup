@@ -2,52 +2,43 @@ import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './app.css';
 
+import { BrowserRouter, NavLink, Route, Routes } from "react-router-dom";
+import { Login } from "./login/login";
+import { About } from "./about/about";
+import { Helper } from "./helper/helper";
+import { Home } from "./home/home";
+
 export default function App() {
   return (
-    <body>
+    <BrowserRouter>
         <header>
         <h1>Fantasy Helper</h1>
         <nav>
             <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="login.html">Login</a></li>
-            <li><a href="optimize.html">Fantasy Helper</a></li>
-            <li><a href="about.html">About</a></li>
+            <li><NavLink to="home">Home</NavLink></li>
+            <li><NavLink to="login">Login</NavLink></li>
+            <li><NavLink to="helper">Fantasy Helper</NavLink></li>
+            <li><NavLink to="about">About</NavLink></li>
             </ul>
         </nav>
         <hr />
         </header>
 
-        <main>
-        <h2>Welcome!</h2>
-            <p>This is a fantasy football helper tool that helps you optimize your lineup based on projected points and your budget.</p>
-        
-            <section>
-                <h3>Database Data (Placeholder)</h3>
-                <ul>
-                    <li>Team A: QB - Player</li>
-                    <li>Team B: QB - Player</li>
-                </ul>
-            </section>
-            <section>
-                <h3>Projected Points Data (Placeholder)</h3>
-                <ul>
-                    <li>Player 1: 20 points</li>
-                    <li>Player 2: 15 points</li>
-                </ul>
-            </section>
-            <section>
-                <h3>Live Updates (Websocket stuff)</h3>
-                <p>Live updates will appear here.</p>
-            </section>
-        </main>
-
-        <footer>
-        <hr />
-        <span class="text-reset">Made by Zachary Kakazu</span>
-        <br />
-        <a href="https://github.com/kakazuz/startup.git">Zach's GitHub</a>
-        </footer>
-    </body>
+        <Routes>
+            <Route path="/home" element={<Home />} exact />
+            <Route path="/login" element={<Login />} />
+            <Route path="/helper" element={<Helper />} />
+            <Route path="/about" element={<About />} />
+            <Route path="*" element={<NotFound />} />
+        </Routes>
+    </BrowserRouter>
   );
+}
+
+function NotFound() {
+    return (
+        <main className="container-fluid bg-secondary text-center">
+            <div>404: Not Found</div>
+        </main>
+    );
 }
