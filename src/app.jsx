@@ -1,8 +1,8 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './app.css';
 
-import { BrowserRouter, NavLink, Route, Routes } from "react-router-dom";
+import { BrowserRouter, NavLink, Route, Routes, useNavigate } from "react-router-dom";
 import { Login } from "./login/login";
 import { About } from "./about/about";
 import { Helper } from "./helper/helper";
@@ -25,7 +25,7 @@ export default function App() {
         </header>
 
         <Routes>
-            <Route path="/" element={<Home />} exact />
+            <Route path="/" element={<Login />} exact />
             <Route path="/home" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/helper" element={<Helper />} />
