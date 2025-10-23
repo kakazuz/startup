@@ -27,11 +27,19 @@ export function Home( {user}) {
                     <p>This is a fantasy football helper tool that helps you optimize your lineup based on projected points and your budget.</p>
                 
                     <section>
-                        <h3>Database Data (Placeholder)</h3>
-                        <ul>
-                            <li>Team A: QB - Player</li>
-                            <li>Team B: QB - Player</li>
-                        </ul>
+                        <h3>Player Comparison (Position)</h3>
+                            {Object.entries(playersByPosition).map(([position, players]) => (
+                                <div key={position} className="position-section">
+                                    <h4>{position} Comparison:</h4>
+                                    <div className="players-list">
+                                    {players.map((p) => (
+                                        <div key={p.name} className="player-card">
+                                        <strong>{p.name}</strong> — {p.projected} pts
+                                        </div>
+                                    ))}
+                                    </div>
+                                </div>
+                            ))}
                     </section>
                     <section>
                         <h3>Projected Points Data (Placeholder)</h3>
