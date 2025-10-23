@@ -107,10 +107,11 @@ I rearrages all my files so that Vite would accept the directory in the public a
 
 ## 🚀 React part 2: Reactivity deliverable
 
-For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
+For this deliverable I did the following. I updated my app.jsx and home.jsx files to add users. My app can now function using a login, logout featuyre that is attached to the local storage to remember users. I also made it so that the pages of my website are hidden till a user signs in with a username. 
+I also added functionality for my home.jsx. The user has an attached file with player information that displayes their players points. It also has a live update section that uses setInterval to display updatyes after a certain duration of time. I hope I did everything required in this portion of the deliverable!
 
-- [ ] **All functionality implemented or mocked out** - I did not complete this part of the deliverable.
-- [ ] **Hooks** - I did not complete this part of the deliverable.
+- [x] **All functionality implemented or mocked out** - I did not complete this part of the deliverable.
+- [x] **Hooks** - I did not complete this part of the deliverable.
 
 ## 🚀 Service deliverable
 
