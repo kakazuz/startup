@@ -86,3 +86,54 @@ header nav a {
     font-family: inherit;
     transition: color 0.3s;
 }
+
+
+.dashboard-container {
+  max-width: 800px;       
+  margin: 0 auto;         
+  padding: 20px;
+}
+
+.position-section {
+  margin-bottom: 24px;
+}
+
+.players-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.player-card {
+  background-color: #333;
+  color: #fff;
+  padding: 10px 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.live-updates {
+  margin-top: 40px;
+}
+
+.updates-feed {
+  background-color: #333;
+  color: #fff;
+  border-radius: 10px;
+  padding: 10px 15px;
+  max-height: 200px;
+  overflow-y: auto;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.update-item {
+  padding: 8px 12px;
+  border-bottom: 1px solid #555;
+}
+
+.update-item:last-child {
+  border-bottom: none;
+}
