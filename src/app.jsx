@@ -36,11 +36,21 @@ export default function App() {
         <h1>Fantasy Helper</h1>
         <nav>
             <ul>
-            <li><NavLink to="home">Home</NavLink></li>
-            <li><NavLink to="login">Login</NavLink></li>
-            <li><NavLink to="helper">Fantasy Helper</NavLink></li>
-            <li><NavLink to="about">About</NavLink></li>
+                {user && (
+                    <>
+                    <li><NavLink to="home">Home</NavLink></li>
+                    <li><NavLink to="login">Login</NavLink></li>
+                    <li><NavLink to="helper">Fantasy Helper</NavLink></li>
+                    <li><NavLink to="about">About</NavLink></li>
+                    </>
+                )}    
             </ul>
+            {user && (
+                <div className="navbar-user">
+                    <span>{user.username}</span>
+                    <button onClick={handleLogout} className="btn btn-secondary btn-sm ms-2">Logout</button>
+                </div>
+            )}
         </nav>
         </header>
 

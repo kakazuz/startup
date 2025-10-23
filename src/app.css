@@ -45,3 +45,10 @@ header nav a {
     font-family: inherit;
     transition: color 0.3s;
 }
+
+.navbar-user {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  gap: 10px;
+}
