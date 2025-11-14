@@ -7,9 +7,12 @@ import { Login } from "./login/login";
 import { About } from "./about/about";
 import { Helper } from "./helper/helper";
 import { Home } from "./home/home";
+import { AuthState } from './login/authState';
 
 export default function App() {
     const [user, setUser] = useState(null);
+    const currentAuthState = user ? AuthState.Authenticated : AuthState.Unauthenticated;
+    const [authState, setAuthState] = React.useState(currentAuthState);
 
     useEffect(() => {
         const savedUser = localStorage.getItem("user");
@@ -18,11 +21,7 @@ export default function App() {
         }
     }, []);
 
-    const handleLogin = (username) => {
-        const newUser = { username };
-        setUser(newUser);
-        localStorage.setItem("user", JSON.stringify(newUser));
-    };
+    
 
     const handleLogout = () => {
         setUser(null);
@@ -55,9 +54,9 @@ export default function App() {
         </header>
 
         <Routes>
-            <Route path="/" element={<Login onLogin={handleLogin} />} exact />
+            <Route path="/" element={<Login />} exact />
             <Route path="/home" element={<Home user={user} onLogout={handleLogout} />} />
-            <Route path="/login" element={<Login onLogin={handleLogin} />} />
+            <Route path="/login" element={<Login />} />
             <Route path="/helper" element={<Helper user={user} />} />
             <Route path="/about" element={<About />} />
             <Route path="*" element={<NotFound />} />
