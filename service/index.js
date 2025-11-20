@@ -8,7 +8,7 @@ const authCookieName = 'token';
 
 // The scores and users are saved in memory and disappear whenever the service is restarted.
 let users = [];
-let scores = [];
+let userRosters = {};
 
 // The service port. In production the front-end code is statically hosted by the service on the same port.
 const port = process.env.PORT || 3000;
@@ -66,6 +66,7 @@ apiRouter.delete('/auth/logout', async (req, res) => {
 const verifyAuth = async (req, res, next) => {
   const user = await findUser('token', req.cookies[authCookieName]);
   if (user) {
+    req.userId = user.email;
     next();
   } else {
     res.status(401).send({ msg: 'Unauthorized' });
@@ -73,15 +74,19 @@ const verifyAuth = async (req, res, next) => {
 };
 
 // GetScores
-apiRouter.get('/scores', verifyAuth, (_req, res) => {
-  res.send(scores);
+apiRouter.get('/roster', verifyAuth, async (req, res) => {
+  const userEmail = req.userId;
+  const userRoster = userRosters[userEmail] || [];
+  res.json({ players: userRoster });
 });
 
-// SubmitScore
-apiRouter.post('/score', verifyAuth, (req, res) => {
-  scores = updateScores(req.body);
-  res.send(scores);
+apiRouter.post('/roster', verifyAuth, async (req, res) => {
+  const userEmail = req.userId;
+  const { players } = req.body;
+  userRosters[userEmail] = players; // Save per user
+  res.json({ players });
 });
+
 
 // Default error handler
 app.use(function (err, req, res, next) {
@@ -93,27 +98,6 @@ app.use((_req, res) => {
   res.sendFile('index.html', { root: 'public' });
 });
 
-// updateScores considers a new score for inclusion in the high scores.
-function updateScores(newScore) {
-  let found = false;
-  for (const [i, prevScore] of scores.entries()) {
-    if (newScore.score > prevScore.score) {
-      scores.splice(i, 0, newScore);
-      found = true;
-      break;
-    }
-  }
-
-  if (!found) {
-    scores.push(newScore);
-  }
-
-  if (scores.length > 10) {
-    scores.length = 10;
-  }
-
-  return scores;
-}
 
 async function createUser(email, password) {
   const passwordHash = await bcrypt.hash(password, 10);

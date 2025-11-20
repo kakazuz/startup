@@ -8,6 +8,7 @@ import { About } from "./about/about";
 import { Helper } from "./helper/helper";
 import { Home } from "./home/home";
 import { AuthState } from './login/authState';
+import Button from 'react-bootstrap/Button';
 
 export default function App() {
     const [user, setUser] = useState(null);
@@ -28,6 +29,21 @@ export default function App() {
         localStorage.removeItem("user");
     };
 
+    async function logout() {
+    try {
+      await fetch(`/api/auth/logout`, {
+        method: 'DELETE',
+      });
+    } catch (err) {
+      console.log("Logout failed (offline?)");
+    } finally {
+      // Always clear local data
+      localStorage.removeItem("userName");
+      setUser(null);
+      window.location.href = "/"; // Force redirect to login
+    }
+  }
+
 
   return (
     <BrowserRouter>
@@ -46,16 +62,26 @@ export default function App() {
             </ul>
             {user && (
                 <div className="navbar-user">
-                    <span>{user.username}</span>
-                    <button onClick={handleLogout} className="btn btn-secondary btn-sm ms-2">Logout</button>
+                    <Button variant='secondary' onClick={() => logout()}>
+                        Logout
+                    </Button>
                 </div>
             )}
         </nav>
         </header>
 
         <Routes>
-            <Route path="/" element={<Login />} exact />
-            <Route path="/home" element={<Home user={user} onLogout={handleLogout} />} />
+            <Route 
+            path="/" 
+            element={
+            <Login 
+            user={user} 
+            authState={authState} 
+            onAuthChange={(user, authState) => {
+                setAuthState(authState);
+                setUser(user);
+            }} />} exact />
+            <Route path="/home" element={<Home user={user} />} />
             <Route path="/login" element={<Login />} />
             <Route path="/helper" element={<Helper user={user} />} />
             <Route path="/about" element={<About />} />
