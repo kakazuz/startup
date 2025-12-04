@@ -5,7 +5,7 @@ const url = `mongodb+srv://${config.userName}:${config.password}@${config.hostna
 const client = new MongoClient(url);
 const db = client.db('startup');
 const userCollection = db.collection('user');
-const scoreCollection = db.collection('roster');
+const rosterCollection = db.collection('roster');
 
 // This will asynchronously test the connection and exit the process if it fails
 (async function testConnection() {
@@ -27,6 +27,7 @@ function getUserByToken(token) {
 }
 
 async function addUser(user) {
+  console.log('in database');
   await userCollection.insertOne(user);
 }
 
@@ -45,11 +46,13 @@ async function addRoster(email, players, name = "My Roster") {
   return result.insertedId;
 }
 
-function getRoster(email) {
-  return rosterCollection
-    .find({ userEmail: email })
-    .sort({ savedAt: -1 })
-    .toArray();
+async function getUserRoster(email) {
+  const user = await getUser(email);
+  return user?.currentRoster || [];
+}
+
+async function saveUserRoster(email, players) {
+  await updateUser({ email, currentRoster: players });
 }
 
 module.exports = {
@@ -58,5 +61,6 @@ module.exports = {
   addUser,
   updateUser,
   addRoster,
-  getRoster,
+  getUserRoster,
+  saveUserRoster
 };
