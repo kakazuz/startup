@@ -3,6 +3,7 @@ const bcrypt = require('bcryptjs');
 const express = require('express');
 const uuid = require('uuid');
 const app = express();
+const DB = require('./database.js');
 
 const authCookieName = 'token';
 
@@ -44,6 +45,7 @@ apiRouter.post('/auth/login', async (req, res) => {
   if (user) {
     if (await bcrypt.compare(req.body.password, user.password)) {
       user.token = uuid.v4();
+      await DB.updateUser(user);
       setAuthCookie(res, user.token);
       res.send({ email: user.email });
       return;
@@ -56,7 +58,8 @@ apiRouter.post('/auth/login', async (req, res) => {
 apiRouter.delete('/auth/logout', async (req, res) => {
   const user = await findUser('token', req.cookies[authCookieName]);
   if (user) {
-    delete user.token;
+    res.token = null;
+    DB.updateUser(user);
   }
   res.clearCookie(authCookieName);
   res.status(204).end();
@@ -76,15 +79,16 @@ const verifyAuth = async (req, res, next) => {
 // GetScores
 apiRouter.get('/roster', verifyAuth, async (req, res) => {
   const userEmail = req.userId;
-  const userRoster = userRosters[userEmail] || [];
+  const userRoster = await DB.getRoster(req.userId);
   res.json({ players: userRoster });
 });
 
 apiRouter.post('/roster', verifyAuth, async (req, res) => {
   const userEmail = req.userId;
   const { players } = req.body;
-  userRosters[userEmail] = players; // Save per user
-  res.json({ players });
+  const updatedRoster = await updateUserRoster(req.userId, players);
+  
+  res.json({ players: updatedRoster });
 });
 
 
@@ -98,6 +102,22 @@ app.use((_req, res) => {
   res.sendFile('index.html', { root: 'public' });
 });
 
+async function getUserRoster(email) {
+  const user = await DB.getUser(email);
+  return user?.currentRoster || [];
+}
+
+
+async function updateUserRoster(email, players) {
+  const updatedUser = {
+    email,
+    currentRoster: players,
+    lastRosterUpdate: new Date()
+  };
+
+  await DB.updateUser(updatedUser);      
+  return players;                          
+}
 
 async function createUser(email, password) {
   const passwordHash = await bcrypt.hash(password, 10);
@@ -107,7 +127,7 @@ async function createUser(email, password) {
     password: passwordHash,
     token: uuid.v4(),
   };
-  users.push(user);
+  await DB.addUser(user);
 
   return user;
 }
@@ -115,7 +135,10 @@ async function createUser(email, password) {
 async function findUser(field, value) {
   if (!value) return null;
 
-  return users.find((u) => u[field] === value);
+  if (field === 'token') {
+    return DB.getUserByToken(value);
+  }
+  return DB.getUser(value);
 }
 
 // setAuthCookie in the HTTP response
