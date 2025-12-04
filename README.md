@@ -129,8 +129,10 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Stores data in MongoDB** - I did not complete this part of the deliverable.
-- [ ] **Stores credentials in MongoDB** - I did not complete this part of the deliverable.
+I have sucessfully set up the connection to MongoDB. My users have an array of their players that is updated and saved through connecting my frontend to the backend MongoDB. It is cool to see how expansive and more data my server can save.
+
+- [x] **Stores data in MongoDB** - I did not complete this part of the deliverable.
+- [x] **Stores credentials in MongoDB** - I did not complete this part of the deliverable.
 
 ## 🚀 WebSocket deliverable
 
