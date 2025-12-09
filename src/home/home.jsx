@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from "react";
+import { RosterEvent, RosterNotifier } from './rosterNotifier';
 import "./home.css";
 
 export function Home( {user}) {
@@ -8,6 +9,7 @@ export function Home( {user}) {
     const [updates, setUpdates] = useState([]);
     const [saving, setSaving] = useState(false);
     const [message, setMessage] = useState("");
+    const [rosterEvents, setRosterEvents] = useState([]);
 
     // Computed — the actual selected player object
     const selectedPlayer = roster.find(p => p.name === selectedPlayerName) || null;
@@ -61,6 +63,8 @@ export function Home( {user}) {
     }
   }, [roster]);
 
+  
+
   async function saveRoster() {
     if (roster.length === 0) return;
     setSaving(true);
@@ -79,9 +83,9 @@ export function Home( {user}) {
     } finally {
     setSaving(false);
     }
-
-    // caal the nofifier.js file after here
+    RosterNotifier.broadcastEvent(user?.name || 'Someone', selectedPlayerName);
   }
+  
 
 
   function addPlayerFromMenu() {
@@ -160,6 +164,35 @@ export function Home( {user}) {
     //     return () => clearInterval(interval);
     // }, [mockPlayers]);
 
+    useEffect(() => {
+      RosterNotifier.addHandler(handleRosterEvent);
+
+      return () => {
+        RosterNotifier.removeHandler(handleRosterEvent);
+      };
+    }, []);
+
+    function handleRosterEvent(event) {
+    setEvent([...rosterEvents, event]);
+  }
+
+    function createMessageArray() {
+      const messageArray = [];
+      for (const [i, event] of rosterEvents.entries()) {
+        let message = 'unknown';
+        const player = event.value.player || event.value.person;
+        message = `added ${event.value} to their roster.`;
+      
+
+      messageArray.push(
+        <div key={i} className='event'>
+          <span className={'roster-event'}>{event.from.split('@')[0]}</span>
+          {message}
+        </div>
+      );
+    }
+    return messageArray;
+  }
 
 
     return (
@@ -269,6 +302,12 @@ export function Home( {user}) {
                                     )}
                                 </div>
                         </section>
+                        <section className="mt-4">
+                          <div className="roster-feed">
+                            <h5>Live Activity</h5>
+                            {createMessageArray()}
+                          </div>
+                        </section>  
                     </div>
             </main>
 
