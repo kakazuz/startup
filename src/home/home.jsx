@@ -68,6 +68,7 @@ export function Home( {user}) {
   async function saveRoster() {
     if (roster.length === 0) return;
     setSaving(true);
+    // console.log('saving roster', roster);
     try {
       const response = await fetch("/api/roster", {
         method: "POST",
@@ -77,13 +78,18 @@ export function Home( {user}) {
       if (response.ok) {
         setMessage("✅ Roster saved!");
         setTimeout(() => setMessage(""), 3000);
+        console.log('broadcasting roster add events');
+        roster.forEach(player => {
+          RosterNotifier.broadcastEvent('Someone', { person  : player.name });
+          console.log('broadcasted event for', player.name);
+        });
       }
     } catch (err) {
       setMessage("⚠️ Save failed");
     } finally {
     setSaving(false);
     }
-    RosterNotifier.broadcastEvent(user?.name || 'Someone', selectedPlayerName);
+    
   }
   
 
@@ -165,28 +171,35 @@ export function Home( {user}) {
     // }, [mockPlayers]);
 
     useEffect(() => {
-      RosterNotifier.addHandler(handleRosterEvent);
+      const handler = (event) => {
+        setRosterEvents(prev => [...prev, event]);
+      };
+      RosterNotifier.addHandler(handler);
 
       return () => {
-        RosterNotifier.removeHandler(handleRosterEvent);
+        RosterNotifier.removeHandler(handler);
       };
     }, []);
 
-    function handleRosterEvent(event) {
-    setEvent([...rosterEvents, event]);
-  }
 
     function createMessageArray() {
+      // console.log('rosterEvents', rosterEvents);
       const messageArray = [];
       for (const [i, event] of rosterEvents.entries()) {
+        // console.log('event', event);
         let message = 'unknown';
-        const player = event.value.player || event.value.person;
-        message = `added ${event.value} to their roster.`;
+        const player = event.value.player || event.value.person || {};
+        // console.log('player', player);
+        if (player.name) {
+          message = `added ${player.name} to their roster.`;
+        }
+        
       
 
       messageArray.push(
         <div key={i} className='event'>
-          <span className={'roster-event'}>{event.from.split('@')[0]}</span>
+          <span className='roster-event'>
+            {event.from ? event.from.split('@')[0] : 'Someone'}</span>
           {message}
         </div>
       );

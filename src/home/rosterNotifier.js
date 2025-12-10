@@ -18,7 +18,9 @@ class RosterEventNotifier {
   constructor() {
     let port = window.location.port;
     const protocol = window.location.protocol === 'http:' ? 'ws' : 'wss';
-    this.socket = new WebSocket(`${protocol}://${window.location.hostname}:${port}/ws`);
+    const wsurl = `${protocol}://${window.location.hostname}:${port}/ws`;
+    console.log(`Connecting to WebSocket at ${wsurl}`);
+    this.socket = new WebSocket(wsurl);
     this.socket.onopen = () => {
       this.receiveEvent(new EventMessage('Startup', { msg: 'connected' }));
     };
@@ -36,7 +38,11 @@ class RosterEventNotifier {
 
   broadcastEvent(from, value) {
     const event = new EventMessage(from, value);
-    this.socket.send(JSON.stringify(new EventMessage(from, value)));
+    if (this.socket.readyState === WebSocket.OPEN) {
+      this.socket.send(JSON.stringify(new EventMessage(from, value)));
+    } else {
+      console.warn('WebSocket not connected, cannot send event');
+    }
   }
 
   addHandler(handler) {

@@ -1,6 +1,7 @@
 {
   "name": "startup",
   "version": "1.0.0",
+  "proxy": "http://localhost:4000",
   "description": "[My Notes](notes.md)",
   "main": "index.js",
   "scripts": {
