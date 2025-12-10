@@ -38,11 +38,7 @@ class RosterEventNotifier {
 
   broadcastEvent(from, value) {
     const event = new EventMessage(from, value);
-    if (this.socket.readyState === WebSocket.OPEN) {
-      this.socket.send(JSON.stringify(new EventMessage(from, value)));
-    } else {
-      console.warn('WebSocket not connected, cannot send event');
-    }
+    this.socket.send(JSON.stringify(event));
   }
 
   addHandler(handler) {
@@ -56,10 +52,9 @@ class RosterEventNotifier {
   receiveEvent(event) {
     this.events.push(event);
 
-    this.events.forEach((e) => {
-      this.handlers.forEach((handler) => {
-        handler(e);
-      });
+  
+    this.handlers.forEach((handler) => {
+      handler(event);
     });
   }
 }

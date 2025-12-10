@@ -78,9 +78,9 @@ export function Home( {user}) {
       if (response.ok) {
         setMessage("✅ Roster saved!");
         setTimeout(() => setMessage(""), 3000);
-        console.log('broadcasting roster add events');
+        // console.log('broadcasting roster add events');
         roster.forEach(player => {
-          RosterNotifier.broadcastEvent('Someone', { person  : player.name });
+          RosterNotifier.broadcastEvent('Someone', { player : player });
           console.log('broadcasted event for', player.name);
         });
       }
@@ -171,19 +171,28 @@ export function Home( {user}) {
     // }, [mockPlayers]);
 
     useEffect(() => {
+      console.log("handler ready");
+
       const handler = (event) => {
-        setRosterEvents(prev => [...prev, event]);
+        console.log("EVENT RECEIVED", event);
+        setRosterEvents(prev => {
+          const newEvent = [...prev, event];
+          console.log(newEvent.length);
+          return newEvent;
+        });
       };
+
       RosterNotifier.addHandler(handler);
 
       return () => {
+        console.log("Cleaning up handler");
         RosterNotifier.removeHandler(handler);
       };
     }, []);
 
 
     function createMessageArray() {
-      // console.log('rosterEvents', rosterEvents);
+      console.log('rosterEvents', rosterEvents);
       const messageArray = [];
       for (const [i, event] of rosterEvents.entries()) {
         // console.log('event', event);
@@ -191,7 +200,9 @@ export function Home( {user}) {
         const player = event.value.player || event.value.person || {};
         // console.log('player', player);
         if (player.name) {
-          message = `added ${player.name} to their roster.`;
+          message = ` added ${player.name} to their roster.`;
+        } else if (event.value.msg === 'connected') {
+          message = ' connected to server.';
         }
         
       
@@ -199,7 +210,7 @@ export function Home( {user}) {
       messageArray.push(
         <div key={i} className='event'>
           <span className='roster-event'>
-            {event.from ? event.from.split('@')[0] : 'Someone'}</span>
+            {event.from ? event.from.split('@')[0] : 'Someone '}</span>
           {message}
         </div>
       );
