@@ -137,9 +137,10 @@ I have sucessfully set up the connection to MongoDB. My users have an array of t
 ## 🚀 WebSocket deliverable
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
+FINALLY FINISHED EVERYTHING AND MY WEBSITE LOOKS BEAUTIFUL!! Websocket was especially important to learn about. In todays society its very importnat that there is interactivity between the users. It was hard to implement with all the server connection and sytactical stuff but fun and great way to finish off my startup!
 
-- [ ] **Backend listens for WebSocket connection** - I did not complete this part of the deliverable.
-- [ ] **Frontend makes WebSocket connection** - I did not complete this part of the deliverable.
-- [ ] **Data sent over WebSocket connection** - I did not complete this part of the deliverable.
-- [ ] **WebSocket data displayed** - I did not complete this part of the deliverable.
-- [ ] **Application is fully functional** - I did not complete this part of the deliverable.
+- [x] **Backend listens for WebSocket connection** - I did not complete this part of the deliverable.
+- [x] **Frontend makes WebSocket connection** - I did not complete this part of the deliverable.
+- [x] **Data sent over WebSocket connection** - I did not complete this part of the deliverable.
+- [x] **WebSocket data displayed** - I did not complete this part of the deliverable.
+- [x] **Application is fully functional** - I did not complete this part of the deliverable.
